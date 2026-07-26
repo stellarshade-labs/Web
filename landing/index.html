@@ -350,6 +350,12 @@ button{font:inherit;background:none;border:0;color:inherit;cursor:pointer}
   #hero .cue i::after{animation:none}
 }
 
+/* Film scenes are scenery, not copy: tapping the wordmark or a caption must
+   not start a text selection or blink a caret. Content sections below the
+   film stay selectable. */
+.scene,.hdr{-webkit-user-select:none;user-select:none;caret-color:transparent}
+html{-webkit-tap-highlight-color:transparent}
+
 /* ——— phone-size film adjustments (late in the sheet so they win) ——— */
 .nav a.lnk{padding:12px 8px;margin:-12px -2px}
 .gh{padding:11px;margin:-11px -4px}
