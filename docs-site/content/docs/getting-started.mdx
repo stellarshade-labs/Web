@@ -3,7 +3,7 @@ title: Getting Started
 description: "Run Shade end-to-end on Stellar testnet: prerequisites, install, generating and funding testnet keys, deploying the Soroban contract, and your first commands."
 ---
 
-{/* adapted from shade@36217c4 docs/05-getting-started.md */}
+{/* adapted from shade@2f12195 docs/05-getting-started.md */}
 
 import { Callout } from 'fumadocs-ui/components/callout';
 
@@ -13,11 +13,18 @@ Run Shade end-to-end on Stellar **testnet** in a few minutes. This page covers p
 
 ## Prerequisites
 
-- **Node.js 20+**
-- **Stellar CLI**, needed to build and deploy the Soroban contract and to generate/fund testnet keys
-- **Rust toolchain**, needed to compile the contract to Wasm
+- **Node.js 20+** — all you need to install and run the CLI.
+- **Stellar CLI** and a **Rust toolchain** — only needed to build/deploy the Soroban **pool** contract yourself, and to generate/fund testnet keys via `stellar keys`.
 
-## Install and build
+## Install the CLI
+
+The `shade` command ships on npm as [`stellar-shade-cli`](https://www.npmjs.com/package/stellar-shade-cli):
+
+```bash
+npm install -g stellar-shade-cli
+```
+
+That is everything the **account** method needs. The **pool** method additionally needs a deployed pool contract; to deploy your own (below), clone the repo and build:
 
 ```bash
 npm install
@@ -105,7 +112,7 @@ The announcement indexer makes account-method discovery fast. It walks the globa
 cd packages/indexer && npm run dev    # NETWORK=testnet, port 3100
 ```
 
-Then pass `--indexer http://localhost:3100` to `scan`/`balance` (or set `SHADE_INDEXER`). Horizon remains the source of truth: a scan falls back to the plain Horizon walk automatically if the indexer is down. See [Architecture](/docs/architecture/) for the trust model, endpoints, and configuration.
+Then pass `--indexer http://localhost:3100` to `scan`/`balance` (or set `SHADE_INDEXER`). Horizon remains the source of truth: a scan falls back to the plain Horizon walk automatically if the indexer is down. See [Architecture → The announcement indexer](/docs/architecture/#the-announcement-indexer) for the trust model, endpoints, and configuration.
 
 ## Using the SDK instead
 

@@ -2,7 +2,7 @@
 title: Introduction
 description: "Shade gives every Stellar payment its own fresh, unlinkable stealth address. Publish one public handle; nobody watching the chain can tell those payments are yours."
 ---
-{/* adapted from shade@36217c4 docs/01-introduction.md */}
+{/* adapted from shade@2f12195 docs/01-introduction.md */}
 
 import { Callout } from 'fumadocs-ui/components/callout';
 
@@ -10,17 +10,9 @@ Shade gives every payment its own fresh, unlinkable address on Stellar. You publ
 
 This page explains what Shade is, the problem it solves, and who it's for. If you want to start using it, jump to [Getting Started](/docs/getting-started/).
 
-**Get Shade from npm:**
+**Try it.** The CLI installs from npm with `npm install -g stellar-shade-cli`. To run the whole flow end-to-end on Stellar **testnet** — including deploying your own pool contract — clone the repo and:
 
 ```bash
-npm install stellar-shade       # the TypeScript SDK for your app
-npm install -g stellar-shade    # the shade CLI
-```
-
-Prefer to run it end-to-end yourself first? Clone the repo, deploy the pool contract to Stellar testnet, and walk a full send → scan → claim cycle:
-
-```bash
-git clone https://github.com/stellarshade-labs/Shade.git && cd Shade
 npm install
 stellar keys generate deployer --network testnet
 stellar keys fund deployer --network testnet
@@ -90,5 +82,5 @@ The protocol and this implementation have **not undergone an external cryptograp
 
 - [Core Concepts](/docs/concepts/): DKSAP (the Dual-Key Stealth Address Protocol Shade is built on), view/spend keys, meta-addresses, view tags
 - [Architecture](/docs/architecture/): the components and how data flows between them
-- [Getting Started](/docs/getting-started/): run it locally
+- [Getting Started](/docs/getting-started/): run it on testnet
 - [Security](/docs/security/): threat model, assumptions, and limits
