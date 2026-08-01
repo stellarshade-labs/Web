@@ -22,8 +22,10 @@ const DIST = path.join(DOCS_SITE, 'dist');
 const VENDORED = path.join(ROOT, 'landing/fumadocs');
 
 const npm = process.platform === 'win32' ? 'npm.cmd' : 'npm';
+// `shell: true` is required on Windows/Node 24: spawning `npm.cmd` without it
+// throws EINVAL (Node's .cmd-spawn hardening). Harmless on POSIX.
 const run = (args) =>
-  execFileSync(npm, args, { cwd: DOCS_SITE, stdio: 'inherit' });
+  execFileSync(npm, args, { cwd: DOCS_SITE, stdio: 'inherit', shell: true });
 
 if (!existsSync(path.join(DOCS_SITE, 'node_modules'))) {
   console.log('docs-site/node_modules missing — running npm install');
